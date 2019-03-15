@@ -1,10 +1,10 @@
 <template>
     <div :class="['cxd-header',isHeaderOnTop()]">
         <router-link to="/">
-          <img alt="logo" class="logo" src="@/assets/logo.svg">
+          <img alt="logo" class="logo" src="@/assets/logo.svg" @click="scrollToTop()">
         </router-link>
-        <div class="nav">
-          <router-link to='/lab'>工坊</router-link>
+        <div class="nav" @click="scrollToTop()">
+          <router-link to='/lab' >工坊</router-link>
           <router-link to='/link'>网址导航</router-link>
           <router-link to='/doc'>开发者文档</router-link>
         </div>
@@ -21,6 +21,9 @@ export default {
       } else {
         return 'not-top'
       }
+    },
+    scrollToTop() {
+      this.$emit('scroll-to-top')
     }
   }
 }
