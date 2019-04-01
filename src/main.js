@@ -7,7 +7,7 @@ import vuescroll from 'vuescroll';
 Vue.use(vuescroll, {
   ops: {
     vuescroll: {
-      wheelScrollDuration: 800,
+      wheelScrollDuration: 100,
     },
     scrollPanel: {
       easing: 'easeInOutQuad'
