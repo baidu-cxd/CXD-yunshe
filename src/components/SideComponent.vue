@@ -5,13 +5,6 @@
             CLOUD EXPERIENCE DESIGN
           </div>          
         </a>
-        <router-link to='/about'>
-          <div class="right">
-            <div class="weibo"></div>
-            <span class="line"></span>
-            <p>ABOUT</p>
-          </div>
-        </router-link>
         <a href="http://cloud.baidu.com" class="right-logo">
            <img src="@/assets/baiduyun@2x.png" alt="">
         </a>
@@ -31,12 +24,14 @@ export default {
 
 <style lang="stylus">
 .cxd-side-component
-  .left
-    animation sidebar-fade-left .4s ease-in-out .4s forwards
-    font-size 12px
+  .left, .right-logo
+    animation sidebar-fade-left .4s ease-in-out .4s forwards 
     position fixed
+    z-index 99 
+  // 左侧
+  .left
+    font-size 12px
     opacity 0
-    z-index 99
     color #000
     font-weight 900
     font-family "avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
@@ -59,44 +54,16 @@ export default {
       right 0
       transform translateY(-1px)
       transition .2s all ease-in-out
-      
-  .right
-    display none  // 隐藏原版 right
-    position fixed
-    z-index 99
-    font-weight 900
-    right 20px
-    transform translateY(-50%)
-    top 50%
-    .line
-      width 2px
-      height 45px
-      display block
-      background-color #000
-      margin auto
-      transition .2s all ease-in-out
-    &:hover
-      .line
-        height 80px
-    p
-      font-size 12px
-      transform rotate(90deg) translateX(15px)
-      font-family "avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
-      -moz-osx-font-smoothing grayscale
-      -webkit-font-smoothing antialiased
-      font-weight 900
-      color #3a3a3a
+  // 右侧
   .right-logo
-    animation sidebar-fade-right .4s ease-in-out .4s forwards
-    position fixed
-    z-index 99
+    animation-name sidebar-fade-right
     font-weight 900
-    right 0px
+    right -20px
     opacity 0
     transform translateY(-50%)
     top 50% 
     img 
-      height  20px
+      height  18px
       transform rotate(90deg)
 @keyframes sidebar-fade-left
   0%

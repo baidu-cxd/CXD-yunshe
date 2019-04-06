@@ -1,0 +1,15 @@
+
+// 页面通用动画模块控制器 - 滚动进入
+.fade-scroll-leave-active 
+  transition all .2s ease-in-out
+.fade-scroll-enter-active
+  transition all .2s ease-in-out .2s
+.fade-scroll-enter-to, .fade-scroll-leave
+  opacity 1
+  transform translateY(0px)
+.fade-scroll-enter
+  opacity 0
+  transform translateY(-10px)
+.fade-scroll-leave-to
+  opacity 0
+  transform translateY(10px)

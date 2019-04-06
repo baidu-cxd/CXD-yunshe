@@ -1,12 +1,20 @@
 <template>
     <div :class="['cxd-header',isHeaderOnTop()]">
         <router-link to="/">
-          <img alt="logo" class="logo" src="@/assets/logo.svg" @click="scrollToTop()">
+          <img alt="logo" class="logo" src="@/assets/logo-yunshe.png">
         </router-link>
-        <div class="nav" @click="scrollToTop()">
-          <router-link to='/lab' >工坊</router-link>
-          <router-link to='/link'>网址导航</router-link>
-          <router-link to='/doc'>开发者文档</router-link>
+        <div class="nav">
+          <transition name="fade-scroll">
+            <div class="nav-animate-content" :key="resolvePath()">
+              <router-link 
+                v-for="nav in resolveNavData()" 
+                :key="nav.link"
+                :to='nav.link'>
+                <p class="en">{{nav.name}}</p>
+                <p class="cn">{{nav.cnName}}</p>
+              </router-link>
+              </div>
+          </transition>
         </div>
         <div class="line"></div>
     </div>
@@ -14,6 +22,57 @@
 
 <script>
 export default {
+  data() {
+    return {
+      navData : {
+        '/' : [ // 首页导航
+          {
+            link : '/cxd/project',
+            name : 'PROJECT',
+            cnName : '项目总结'
+          },
+         {
+            link : '/cxd/articles',
+            name : 'ARTICLES',
+            cnName : '团队博客'
+          }, 
+          {
+            link : '/cxd/others',
+            name : 'OTHERS',
+            cnName : '其它内容',
+            childrens : [
+              {
+                link : '/guide',
+                name : 'GUIDE'
+              },
+              {
+                link : '/resource',
+                name : 'RESOURCE'
+              },
+              {
+                link : '/about',
+                name : 'ABOUT'
+              }
+            ]
+          }   
+        ],
+        '/guide' : [ // 设计规范导航
+          {
+            link : '/guide/portal',
+            name : 'PORTAL'
+          },
+          {
+            link : '/guide/console',
+            name : 'CONSOLE'
+          },
+          {
+            link : '/guide/motion',
+            name : 'MOTION'
+          },
+        ]
+      }
+    }
+  },
   methods: {
     isHeaderOnTop() {
       if (this.$store.state.scroll == '0') {
@@ -22,8 +81,17 @@ export default {
         return 'not-top'
       }
     },
-    scrollToTop() {
-      this.$emit('scroll-to-top')
+    resolvePath() {
+      let path = this.$store.state.path
+      path = '/' + path.split("/")[1];
+      if (path === '/cxd') {
+        return '/'
+      } else {
+        return path
+      }
+    },
+    resolveNavData() {
+      return this.navData[this.resolvePath()]
     }
   }
 }
@@ -37,18 +105,17 @@ export default {
   
   //  顶部导航栏全局样式
   .cxd-header
-    animation header-fade-in .4s ease-in-out .4s forwards
+    animation header-fade-in .4s ease-in-out .2s forwards
     z-index 100
     height 60px
     position fixed // 导航栏定位
     top 0
-    left 40px
-    right 40px
+    width 100%
     transition .4s all ease-in-out .2s
     background-color #fff
     opacity 0
     .logo
-      left 10px
+      left 20px
       height 20px
       position absolute
       top 50%
@@ -56,21 +123,49 @@ export default {
       z-index 3
       transition .4s all ease-in-out .2s
     .nav
-      right 10px
+      right 20px
       height 20px
       position absolute
       top 50%
       transform translateY(-50%)
-      transition .4s all ease-in-out .2s
       z-index 10
+      transition .4s all ease-in-out .2s
       a
         transition .2s all ease-in-out
-        color #666
-        margin-left 30px
-        font-size 14px 
+        margin-left 30px 
         display block
         float left
         position relative
+        height 20px
+        p
+          display block
+          text-align center
+          font-size 14px 
+          font-weight 600
+          color #000
+          height 20px
+          margin 0
+          &.en
+            opacity 1
+            transition .2s all ease-in-out .06s
+            transform translateY(0)
+          &.cn
+            position absolute
+            top 0
+            left 0
+            right 0
+            opacity 0
+            transition .2s all ease-in-out 
+            transform translateY(10px)
+        &:hover
+          p.en
+            opacity 0
+            transform translateY(-10px)
+            transition .2s all ease-in-out 
+          p.cn
+            opacity 1   
+            transition .2s all ease-in-out .06s  
+            transform translateY(0px)      
         &:hover
           color #000
         &.router-link-active
@@ -97,14 +192,15 @@ export default {
       transition .2s all ease-in-out .4s
   .cxd-header.top
       height 80px
-      left 80px
-      right 80px
+      width 100%
       .logo
-        left 0px
+        left 40px
       .nav
-        right 0px
+        right 40px
       a.router-link-active:after
         bottom -30px
+      .line
+        opacity 0
     
 
 

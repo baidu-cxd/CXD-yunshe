@@ -1,5 +1,11 @@
 # cxd-lab
 
+## 使用的插件
+
+vuescroll
+
+文档链接[https://vuescrolljs.yvescoding.org/]
+
 ## Project setup
 ```
 yarn install
