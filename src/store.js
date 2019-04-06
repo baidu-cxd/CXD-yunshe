@@ -6,7 +6,8 @@ Vue.use(Vuex)
 export default new Vuex.Store({
   state: {
     path: '/',
-    scroll: 0
+    scroll: 0,
+    isGobalNavOpen: false
   },
   mutations: {
 

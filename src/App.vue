@@ -3,13 +3,13 @@
     <!-- scroll 容器 -->
     <cxd-scroll @handle-scroll="handleScroll" ref="vs"> 
       <CxdHeader/>  
+      <CxdNav/>  
       <!-- 滚动内容 -->
       <div class="scroll-dom">
         <section class="section">这是一个板块</section>
         <section class="section">这是一个板块</section>
         <section class="section">这是一个板块</section>
         <section class="section">这是一个板块</section>
-        <Footer/>
       </div> 
     </cxd-scroll>
     <!-- 侧边栏 -->
@@ -20,12 +20,12 @@
 <script>
 import CxdHeader from './components/CxdHeader.vue'
 import SideComponent from './components/SideComponent.vue'
-import Footer from './components/Footer.vue'
+import CxdNav from './components/CxdNav.vue'
 export default {
   components: {
     CxdHeader,
     SideComponent,
-    Footer
+    CxdNav  
   },
   created () {
     // 还原滚动条位置
@@ -38,6 +38,7 @@ export default {
     $route(to,from){
       // 页面切换的时候变更链接
       this.$store.state.path = this.$route.path
+      this.$store.state.isGobalNavOpen = false
       this.scrollToTop()
     }
   },
