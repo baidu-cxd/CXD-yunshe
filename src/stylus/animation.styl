@@ -15,6 +15,15 @@
   opacity 0
   transform translateY(10px)
 
+// 全屏滚动
+
+.fade-full-page-leave-active, .fade-full-page-enter-active
+  transition all 1.2s cubic-bezier(0.86, 0, 0.07, 1)
+.fade-full-page-enter-to, .fade-full-page-leave
+  transform translateY(0px)
+.fade-full-page-enter,.fade-full-page-leave-to
+  transform translateY(-100%)
+
 
 // 渐隐渐现动画
 

@@ -23,10 +23,10 @@ router.afterEach(() => {
 Vue.use(vuescroll, {
   ops: {
     vuescroll: {
-      wheelScrollDuration: 100,
+      wheelScrollDuration: 1,
     },
     scrollPanel: {
-      easing: 'easeInOutQuad'
+      easing: 'easeInOutQuart',
     },
     rail: {},
     bar: {

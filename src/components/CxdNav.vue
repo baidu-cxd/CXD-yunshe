@@ -74,24 +74,23 @@ export default {
 <style lang="stylus">
 .cxd-nav
   position fixed
-  width 100%
-  height 100%
   top 0
   left 0 
   z-index 300
   .nav-bg
-    position absolute
+    position fixed
     top 0
     left 0
     right 0
     bottom 0
+    z-index 300
     background-color rgba(255, 255, 255, .9)
   .nav-content
     width 200px
-    position absolute
-    z-index 10
+    position fixed
+    z-index 301
     left 50%
-    top 20%
+    top 120px
     transform translateX(-50%)
     a
       transition .2s all ease-in-out

@@ -7,7 +7,10 @@ export default new Vuex.Store({
   state: {
     path: '/',
     scroll: 0,
-    isGobalNavOpen: false
+    isGobalNavOpen: false,
+    hasFullPageScroll: false,
+    overFullPageScroll: false,
+    screenHeight: true,
   },
   mutations: {
 

@@ -1,16 +1,12 @@
 <template>
-  <div class="cxd-lab-wrp">
+  <div class="cxd-wrp">
     <!-- scroll 容器 -->
     <cxd-scroll @handle-scroll="handleScroll" ref="vs"> 
       <CxdHeader/>  
       <CxdNav/>  
       <!-- 滚动内容 -->
-      <div class="scroll-dom">
-        <section class="section">这是一个板块</section>
-        <section class="section">这是一个板块</section>
-        <section class="section">这是一个板块</section>
-        <section class="section">这是一个板块</section>
-      </div> 
+        <!-- 页面容器 -->
+        <router-view @scroll-to="fullPageGo"/>
     </cxd-scroll>
     <!-- 侧边栏 -->
     <SideComponent/>
@@ -32,7 +28,6 @@ export default {
     this.$store.state.scroll = 0
     // 获得当前页面的链接
     this.$store.state.path = this.$route.path
-    console.log(this.$store.state.path)
   },
   watch:{
     $route(to,from){
@@ -44,13 +39,34 @@ export default {
   },
   methods: {
     handleScroll(vertical, horizontal, nativeEvent) {
+        let change = vertical.scrollTop - this.$store.state.scroll
         this.$store.state.scroll = vertical.scrollTop
+        console.log(change)
+        // 全屏滚动
+        if (this.$store.state.hasFullPageScroll){
+          if (this.$store.state.scroll < 200 && change > 0){
+            this.fullPageGo()
+          }
+        }
+        // 返回全屏滚动
+        if (this.$store.state.overFullPageScroll){
+          if (this.$store.state.scroll < 200 && change < 0){
+            this.$refs['vs'].scrollTo({y:'0'}, 1)
+            this.$store.state.overFullPageScroll = false
+            this.$store.state.hasFullPageScroll = true
+          }
+        }
     },
     scrollToTop() {
       this.$refs['vs'].scrollTo ({
         x: '0',
         y: '0'
       })
+    },
+    fullPageGo() {
+      this.$refs['vs'].scrollTo({y:'1'}, 1)
+      this.$store.state.hasFullPageScroll = false  
+      setTimeout(()=>{this.$store.state.overFullPageScroll = true},300);  
     }
    }
 }
@@ -74,7 +90,7 @@ body
   a
     text-decoration-line none
   h1, h2, h3, h4, h5, p, a, span, div 
-    font-family: "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+    font-family: "Avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
     /*修改浏览器渲染字体效果*/ 
     -moz-osx-font-smoothing: grayscale;  
     -webkit-font-smoothing: antialiased; 
@@ -107,23 +123,12 @@ body
 #nprogress .spinner
   top 10px
   right 10px
-// 局部样式
 
-html, body, .cxd-lab-wrp 
+// 滚动组件样式
+
+html, body, .cxd-wrp 
   width 100%
   height 100%
   .scroll-dom
-    min-height 2000px
-    padding-bottom 120px
     overflow hidden
-    section 
-      height 400px 
-      background-color #eee
-      border-radius 10px
-      margin 120px
-      line-height 400px
-      text-align center
-      color #666
-      font-size 12px
-
 </style>

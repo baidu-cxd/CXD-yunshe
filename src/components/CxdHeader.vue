@@ -1,7 +1,16 @@
 <template>
     <div :class="['cxd-header',isHeaderOnTop(),resolvePath()]">
         <router-link to="/">
-          <img alt="logo" class="logo" src="@/assets/logo-yunshe.png">
+          <div class="logo">
+            <transition name="fade-scroll">
+              <img alt="logo" :src="resolveLogoFirst()" 
+                :key="resolveLogoFirst()">
+            </transition>
+            <transition name="fade-scroll">
+              <img alt="logo" :src="resolveLogoLast()" 
+                :key="resolveLogoLast()">
+            </transition>
+          </div>
         </router-link>
         <div class="nav">
           <transition name="fade-scroll">
@@ -31,6 +40,11 @@
 export default {
   data() {
     return {
+      logo : {
+        'cxd' : require('@/assets/logo-cxd.png'),
+        'yunshe' : require('@/assets/logo-yunshe.png'),
+        'guide' : require('@/assets/logo-guide.png')
+      },
       navData : {
         '/' : [ // 首页导航
           {
@@ -70,6 +84,16 @@ export default {
     }
   },
   methods: {
+    resolveLogoFirst() {
+      return this.logo['cxd']
+    },
+    resolveLogoLast() {
+      if (this.resolvePath() === '/guide' ) {
+        return this.logo['guide']
+      } else {
+        return this.logo['yunshe']
+      }
+    },
     isHeaderOnTop() {
       if (this.$store.state.scroll == '0') {
         return 'top'
@@ -121,6 +145,10 @@ export default {
       transform translateY(-50%) 
       z-index 3
       transition .4s all ease-in-out .2s
+      img 
+        display block
+        float left
+        height 20px
     .nav
       right (30 + 36) px
       height 20px
