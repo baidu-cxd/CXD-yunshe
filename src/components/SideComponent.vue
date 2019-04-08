@@ -34,7 +34,7 @@ export default {
     opacity 0
     color #000
     font-weight 900
-    font-family "avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+    font-family Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
     -moz-osx-font-smoothing grayscale
     -webkit-font-smoothing antialiased
     transform rotate(-90deg) translateY(-50%)

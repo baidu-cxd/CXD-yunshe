@@ -1,14 +1,24 @@
 <template>
-    <div class="cxd-footer">
+    <div class="cxd-footer" :class="kind">
         <a href="http://yunshe.design/">CxD</a>
         <a href="http://bce-website.cdn.bcebos.com/">Cloud Lab</a>
         <p>Copyright ©2018 Cxd-Design</p>
     </div>
 </template>
 
+<script>
+export default {
+  props: {
+    kind: {
+      default: 'white'
+    } 
+    }
+}
+</script>
+
+
 <style lang="stylus">
   .cxd-footer
-    padding-top 160px
     height 120px
     margin 0
     position absolute
@@ -38,5 +48,16 @@
       color #000
       line-height 20px
       font-size 14px
+      font-weight 500
+
+// 皮肤
+.cxd-footer.black
+  background-color transparent
+  a, p
+    color #fff
+  &:before
+    background-color rgba(255, 255, 255, .2)
+
+
 </style>
 

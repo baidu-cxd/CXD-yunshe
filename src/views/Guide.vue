@@ -31,14 +31,29 @@
                    </router-link>
                </div>
            </div>
-           <div class="footer"></div>
+           <div class="footer">
+               <p class="title">THE EXTREMLY</p>
+               <p class="title">USER EXPERIENCE</p>
+               <div class="des">
+                   <p>百度智能云用户体验团队成立于 2015 年</p>
+                   <p>从零开始，建立团队内部设计流程</p>
+                   <p>输出设计规范和控件库、协助前端构建前端控件库</p>
+                   <p>并将整套控件规范分享到整个内部设计团队</p>
+               </div>
+               <router-link to="./cxd/about" class="button">
+                   READ MORE
+               </router-link>
+               <Footer :kind="'black'"/>
+           </div>
        </div>
     </div>
 </template>
 
 <script>
 import { link } from 'fs';
+import Footer from '@/components/Footer.vue'
 export default {
+    components: {Footer},
     data(){
         return {
             items : [
@@ -49,7 +64,7 @@ export default {
                     link: '/guide/portal'
                 },
                 {
-                    name : 'PORTAL DESIGN',
+                    name : 'CONSOLE DESIGN',
                     des : ['PRODUCT、SKETCH WIDGET LIB','PROJECT、INDEPENDANT PLATFORM'],
                     text : 'Console 端平台规范是为了对内统一设计语言，提供一套完整的设计依据和准则。对外设计异质化的同时方便上下游和跨团队协作快速表达需求和想法，既能提升开发效率，又能保证最终落地效果的一致性。',
                     link: '/guide/console'
@@ -69,6 +84,7 @@ export default {
     },
     destroyed(){
         this.$store.state.hasFullPageScroll = false
+        this.$store.state.overFullPageScroll = false
     },
     methods: {
       fullPageScroll() {
@@ -100,22 +116,22 @@ export default {
     &:nth-of-type(odd):after
       background-color #fff
     .order
-      font-family "Montserrat","Avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+      font-family "Montserrat",Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
       font-size 27px
       text-align center
     h3
       text-align center
       font-size 42px
-      font-weight 800
+      font-weight 900
       margin 40px 0
-      font-family "Avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+      font-family Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
     .des
       font-size 18px
       width 300px
       margin auto
       text-align center
       font-weight 500
-      font-family "Montserrat","Avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+      font-family "Montserrat",Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
     .line
       width 30px
       background-color #000
@@ -155,10 +171,48 @@ export default {
 .guide
   .footer
     width 100%
-    height 1000px
+    height 800px
     background-color #000
     margin-top -100px
-
+    padding-top 280px
+    p.title
+      font-size 50px
+      line-height 80px
+      font-weight 900
+      color #fff
+      text-align center
+      margin 0
+      font-family Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+    div.des
+      width 400px
+      margin 80px auto
+      p
+        color #ffffff
+        font-size 16px
+        line-height 26px
+        font-weight 500
+        margin 10px auto
+        text-align center
+    .button
+        display block
+        margin 110px auto
+        width 220px
+        height 50px
+        background-color #fff
+        text-decoration none 
+        font-size 12px
+        line-height 46px
+        border 2px solid transparent
+        box-sizing border-box
+        color #000
+        text-align center
+        font-weight 600
+        transition .2s all ease-in-out
+        &:hover
+          color #fff
+          background-color transparent
+          border 2px solid #fff
+          cursor pointer
 // 头部
 .guide
   width 100%

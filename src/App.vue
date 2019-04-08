@@ -1,12 +1,16 @@
 <template>
   <div class="cxd-wrp">
     <!-- scroll 容器 -->
-    <cxd-scroll @handle-scroll="handleScroll" ref="vs"> 
-      <CxdHeader/>  
+    <cxd-scroll @handle-scroll="handleScroll" ref="vs">
+      <transition name="fade-scroll"> 
+        <CxdHeader v-if="this.$store.state.isShowHeader"/>  
+      </transition>
       <CxdNav/>  
       <!-- 滚动内容 -->
         <!-- 页面容器 -->
-        <router-view @scroll-to="fullPageGo"/>
+      <transition name="fade-router-view">
+        <router-view @scroll-to="fullPageGo" key="this.$route.path"/>
+      </transition>
     </cxd-scroll>
     <!-- 侧边栏 -->
     <SideComponent/>
@@ -41,7 +45,7 @@ export default {
     handleScroll(vertical, horizontal, nativeEvent) {
         let change = vertical.scrollTop - this.$store.state.scroll
         this.$store.state.scroll = vertical.scrollTop
-        console.log(change)
+        console.log(this.$refs['vs'].getCurrentviewDom())
         // 全屏滚动
         if (this.$store.state.hasFullPageScroll){
           if (this.$store.state.scroll < 200 && change > 0){
@@ -90,7 +94,7 @@ body
   a
     text-decoration-line none
   h1, h2, h3, h4, h5, p, a, span, div 
-    font-family: "Avenir", "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
+    font-family: Avenir, "PingFang SC", "SF Pro SC","SF Pro Text","Helvetica Neue",  Helvetica,  Roboto, 'Arial','microsoft yahei ui',"Microsoft YaHei",SimSun, sans-serif;
     /*修改浏览器渲染字体效果*/ 
     -moz-osx-font-smoothing: grayscale;  
     -webkit-font-smoothing: antialiased; 

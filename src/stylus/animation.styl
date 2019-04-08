@@ -1,4 +1,19 @@
 
+// 页面转场动画
+.fade-router-view-leave-active 
+  transition all .4s ease-in-out
+.fade-router-view-enter-active
+  transition all .4s ease-in-out .2s
+.fade-router-view-enter-to, .fade-router-view-leave
+  opacity 1
+  transform translateY(0px)
+.fade-router-view-enter
+  opacity 0
+  transform translateY(100px)
+.fade-router-view-leave-to
+  opacity 0
+  transform translateY(-100px)
+
 // 页面通用动画模块控制器 - 滚动切换动画
 
 .fade-scroll-leave-active 
