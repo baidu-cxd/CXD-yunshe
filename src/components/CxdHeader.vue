@@ -1,17 +1,17 @@
 <template>
     <div :class="['cxd-header',isHeaderOnTop(),resolvePath()]">
-        <router-link to="/">
-          <div class="logo">
-            <transition name="fade-scroll">
+        <div class="logo">
+          <router-link to="/">
               <img alt="logo" :src="resolveLogoFirst()" 
                 :key="resolveLogoFirst()">
-            </transition>
+          </router-link>
+          <router-link :to="resolvePath()">
             <transition name="fade-scroll">
-              <img alt="logo" :src="resolveLogoLast()" 
-                :key="resolveLogoLast()">
+                <img alt="logo" :src="resolveLogoLast()" 
+                  :key="resolveLogoLast()">
             </transition>
-          </div>
-        </router-link>
+          </router-link>
+        </div>
         <div class="nav">
           <transition name="fade-scroll">
             <div class="nav-animate-content" :key="resolvePath()" 
@@ -21,7 +21,6 @@
                 :key="nav.link"
                 :to='nav.link'>
                 <p class="en">{{nav.name}}</p>
-                <p class="cn">{{nav.cnName}}</p>
               </router-link>
               </div>
           </transition>
@@ -37,6 +36,7 @@
 </template>
 
 <script>
+import '@/config/nav.js'
 export default {
   data() {
     return {
@@ -45,42 +45,6 @@ export default {
         'yunshe' : require('@/assets/logo-yunshe.png'),
         'guide' : require('@/assets/logo-guide.png')
       },
-      navData : {
-        '/' : [ // 首页导航
-          {
-            link : '/cxd/project',
-            name : 'PROJECT',
-            cnName : '项目总结'
-          },
-          {
-            link : '/cxd/articles',
-            name : 'ARTICLES',
-            cnName : '团队博客'
-          }, 
-          {
-            link : '/cxd/about',
-            name : 'ABOUT',
-            cnName : '关于我们'            
-          }  
-        ],
-        '/guide' : [ // 设计规范导航
-          {
-            link : '/guide/portal',
-            name : 'PORTAL',
-            cnName : '官  网'
-          },
-          {
-            link : '/guide/console',
-            name : 'CONSOLE',
-            cnName : '控制台'
-          },
-          {
-            link : '/guide/motion',
-            name : 'MOTION',
-            cnName : '动  画'
-          },
-        ]
-      }
     }
   },
   methods: {
@@ -88,6 +52,7 @@ export default {
       return this.logo['cxd']
     },
     resolveLogoLast() {
+      console.log(this.resolvePath())
       if (this.resolvePath() === '/guide' ) {
         return this.logo['guide']
       } else {
@@ -111,7 +76,7 @@ export default {
       }
     },
     resolveNavData() {
-      return this.navData[this.resolvePath()]
+      return navData[this.resolvePath()]
     },
     toggleGobalNav() {
       this.$store.state.isGobalNavOpen = !this.$store.state.isGobalNavOpen
@@ -150,7 +115,7 @@ export default {
         float left
         height 20px
     .nav
-      right (30 + 36) px
+      right 80px
       height 20px
       position absolute
       top 50%
@@ -161,8 +126,8 @@ export default {
         width 16px
         height 16px
         position absolute
-        right -40px
-        top 2px
+        right -50px
+        top 0px
         transition .2s all ease-in-out .4s
         &:hover
           cursor pointer
@@ -197,25 +162,11 @@ export default {
           min-width 60px
           &.en
             opacity 1
-            transition .4s all ease-out .2s, .2s opacity  ease-out .2s
-            transform translateY(0)
-          &.cn
-            position absolute
-            top 0
-            left 0
-            right 0
-            opacity 0
-            transition .2s all ease-in-out
-            transform translateY(5px)
+            transition .2s all ease-out .2s, .2s opacity  ease-out .2s
         &:hover
           p.en
-            opacity 0
-            transform translateY(-5px)
-            transition .2s all ease-in-out
-          p.cn
-            opacity 1   
-            transition .4s all ease-out .2s, .2s opacity  ease-out .2s  
-            transform translateY(0px)      
+            opacity 1
+            transition .1s all ease-in-out  
         &.router-link-active
           color #000
           &:after
@@ -242,9 +193,9 @@ export default {
       height 80px
       width 100%
       .logo
-        left 40px
+        left 30px
       .nav
-        right (40+36) px
+        right 80 px
       a.router-link-active:after
         bottom -30px
       .line

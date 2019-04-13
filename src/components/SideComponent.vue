@@ -20,8 +20,6 @@ export default {
     }
 }
 </script>
-
-
 <style lang="stylus">
 .cxd-side-component
   .left, .right-logo
@@ -39,7 +37,7 @@ export default {
     -webkit-font-smoothing antialiased
     transform rotate(-90deg) translateY(-50%)
     top 50%
-    left -40px
+    left -43px
     display block
     &:hover:after
       width 100%
@@ -58,7 +56,7 @@ export default {
   .right-logo
     animation-name sidebar-fade-right
     font-weight 900
-    right -20px
+    right -24px
     opacity 0
     transform translateY(-50%)
     top 50% 

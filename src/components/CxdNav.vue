@@ -8,7 +8,6 @@
                 :key="nav.link"
                 :to='nav.link'>
                 <p class="en">{{nav.name}}</p>
-                <p class="cn">{{nav.cnName}}</p>
             </router-link>
           </div>
         </transition>
@@ -76,7 +75,7 @@ export default {
   position fixed
   top 0
   left 0 
-  z-index 300
+  z-index 100
   .nav-bg
     position fixed
     top 0
@@ -109,24 +108,5 @@ export default {
         margin 0
         min-width 60px
         &.en
-          opacity 1
-          transition .4s all ease-out .2s, .2s opacity  ease-out .2s
-          transform translateY(0)
-        &.cn
-          position absolute
-          top 0
-          left 0
-          right 0
-          opacity 0
-          transition .2s all ease-in-out
-          transform translateY(5px)
-      &:hover
-        p.en
-          opacity 0
-          transform translateY(-5px)
-          transition .2s all ease-in-out
-        p.cn
-          opacity 1   
-          transition .4s all ease-out .2s, .2s opacity  ease-out .2s  
-          transform translateY(0px)     
+          opacity 1 
 </style>

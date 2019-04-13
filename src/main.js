@@ -35,7 +35,6 @@ Vue.use(vuescroll, {
       size: '6px',
     }
   }, 
-  name: 'cxdScroll' // 在这里自定义组件名字
 });
 
 Vue.config.productionTip = false
