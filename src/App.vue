@@ -1,7 +1,9 @@
 <template>
   <div class="cxd">
     <!-- 页面头部 -->
-    <CxdHeader v-if="this.$store.state.isShowHeader"/>
+    <transition name="fade-scroll">
+      <CxdHeader v-if="this.$store.state.isShowHeader"/>
+    </transition>
     <!-- 全局导航栏 --> 
     <CxdNav/>  
     <!-- 页面本体 -->
@@ -45,7 +47,7 @@ export default {
 body
     margin 0
     padding 0
-  html, body, #app
+  html, body, #app, .cxd
     width 100%
     height 100%
   a

@@ -52,7 +52,6 @@ export default {
       return this.logo['cxd']
     },
     resolveLogoLast() {
-      console.log(this.resolvePath())
       if (this.resolvePath() === '/guide' ) {
         return this.logo['guide']
       } else {
@@ -60,7 +59,9 @@ export default {
       }
     },
     isHeaderOnTop() {
-      if (this.$store.state.scroll == '0') {
+      if (this.$store.state.fullPage.now !== 0) {
+        return 'not-top'
+      } else if (this.$store.state.scroll == 0) {
         return 'top'
       } else {
         return 'not-top'
@@ -95,7 +96,7 @@ export default {
   .cxd-header
     animation header-fade-in .4s ease-in-out .2s forwards
     z-index 1000
-    height 60px
+    height 48px
     position fixed // 导航栏定位
     top 0
     width 100%
@@ -103,7 +104,7 @@ export default {
     background-color #fff
     opacity 0
     .logo
-      left 20px
+      left 30px
       height 20px
       position absolute
       top 50%

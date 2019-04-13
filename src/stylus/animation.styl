@@ -30,15 +30,29 @@
   opacity 0
   transform translateY(10px)
 
+
 // 全屏滚动
 
-.fade-full-page-leave-active, .fade-full-page-enter-active
+.full-page-down-leave-active,.full-page-up-leave-active
   transition all 1.2s cubic-bezier(0.86, 0, 0.07, 1)
-.fade-full-page-enter-to, .fade-full-page-leave
-  transform translateY(0px)
-.fade-full-page-enter,.fade-full-page-leave-to
+.full-page-down-enter-active,.full-page-up-enter-active
+  transition all 1.2s cubic-bezier(0.86, 0, 0.07, 1)
+.full-page-down-enter-to
+  transform translateY(0)
+.full-page-down-leave
+  transform translateY(0)
+.full-page-down-enter
+  transform translateY(100%)
+.full-page-down-leave-to
   transform translateY(-100%)
-
+.full-page-up-enter-to
+  transform translateY(0)
+.full-page-up-leave
+  transform translateY(0)
+.full-page-up-enter
+  transform translateY(-100%)
+.full-page-up-leave-to
+  transform translateY(100%)
 
 // 渐隐渐现动画
 

@@ -28,7 +28,8 @@ Vue.use(vuescroll, {
     scrollPanel: {
       easing: 'easeInOutQuart',
     },
-    rail: {},
+    rail: {
+    },
     bar: {
       // onlyShowBarOnScroll: false,
       background: '#000',
