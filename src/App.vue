@@ -33,6 +33,7 @@ export default {
     $route(to,from){
       // 页面切换的时候变更链接
       this.$store.state.path = this.$route.path
+      this.$store.state.scroll = 0
     }
   },
 }
@@ -50,6 +51,7 @@ body
   html, body, #app, .cxd
     width 100%
     height 100%
+    overflow hidden
   a
     text-decoration-line none
   h1, h2, h3, h4, h5, p, a, span, div 

@@ -27,6 +27,7 @@ Vue.use(vuescroll, {
     },
     scrollPanel: {
       easing: 'easeInOutQuart',
+      scrollingX: false,
     },
     rail: {
     },

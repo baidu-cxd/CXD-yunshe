@@ -2,7 +2,7 @@
     <div class="cxd-footer" :class="kind">
         <a href="http://yunshe.design/">CxD</a>
         <a href="http://bce-website.cdn.bcebos.com/">Cloud Lab</a>
-        <p>Copyright ©2018 Cxd-Design</p>
+        <p class="copy">Copyright ©2018 Cxd-Design</p>
     </div>
 </template>
 
@@ -42,7 +42,7 @@ export default {
       display block
       height 1px
       background-color #DFDFDF
-    p 
+    p.copy 
       float right
       margin 50px 80px 0 0
       color #000

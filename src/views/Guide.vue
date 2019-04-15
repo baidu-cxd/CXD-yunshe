@@ -1,7 +1,7 @@
 <template>
     <div class="guide">
       <!-- 全屏滚动的区域 --> 
-      <fullPage :max="5" ref="fullpage">
+      <fullPage :max="4" ref="fullpage">
         <!-- 首屏 --> 
         <div class="full-page-child" id="child-0" key="child-0" v-if="this.$store.state.fullPage.now === 0" slot="group">
           <video src="https://cxd-public.cdn.bcebos.com/cxd-guide/bg.mp4" autoplay="autoplay" muted="muted" loop="loop"></video>
@@ -53,26 +53,37 @@
         <!-- 第四屏 --> 
         <div class="full-page-child child-after" slot="group"
           key="child-3" v-else-if="this.$store.state.fullPage.now === 3">
-          <div class="after-page-content">
-            <p class="index">{{items[2].index}}</p>
-            <p class="name">{{items[2].name}}</p>
-            <p class="des">{{items[2].des[0]}}</p>
-            <p class="des">{{items[2].des[1]}}</p>
-            <div class="line"></div>
-            <p class="text">{{items[2].text}}</p>
-            <a :href="items[2].link" class="link">
-              READ MORE
-           </a>
-          </div>
-          <div class="gr-bg bottom last" slot="bg" style="bottom:-70%;"></div>
-        </div>
-        <!-- 第五屏 --> 
-        <div class="full-page-child page-footer" slot="group"
-          key="child-5" v-else-if="this.$store.state.fullPage.now === 4">
-          <vue-scroll>
-            <div class="footer-content">
-              ssssss
-              sss
+          <vue-scroll @handle-scroll="handleScroll">
+            <div class="height-content">
+                <div class="after-page-content">
+                <p class="index">{{items[2].index}}</p>
+                <p class="name">{{items[2].name}}</p>
+                <p class="des">{{items[2].des[0]}}</p>
+                <p class="des">{{items[2].des[1]}}</p>
+                <div class="line"></div>
+                <p class="text">{{items[2].text}}</p>
+                <a :href="items[2].link" class="link">
+                READ MORE
+                </a>
+              </div>
+            </div>
+            <div class="page-footer">
+              <div class="gr-bg"></div>
+              <img src="@/assets/guide/footer.png" alt="">
+              <p class="des">
+                百度智能云用户体验团队成立于 2015 年
+              </p>
+              <p class="des">
+                从零开始，建立团队内部设计流程
+              </p>
+              <p class="des">
+                输出设计规范和控件库、协助前端构建前端控件库
+              </p>
+              <p class="des">
+                并将整套控件规范分享到整个内部设计团队
+              </p>
+              <router-link to="/cxd/about" class="link">READ MORE</router-link>
+              <Footer :kind="'black'"/>
             </div>
           </vue-scroll>
         </div>
@@ -84,7 +95,56 @@
 .guide
   height 100%
   overflow hidden
+  .height-content
+    height 100vh
+    position relative
 // 内容
+.page-footer
+  width 100%
+  background-color #000
+  height 760px
+  margin-top 200px
+  position relative
+  img
+    display block
+    width 80px
+    padding-top 0
+    margin 0 auto 100px
+    display block 
+  p.des
+    display block
+    width 400px
+    margin 0px auto
+    color #ffffff
+    font-size 14px
+    line-height 26px
+    font-weight 500
+    text-align center
+  .gr-bg
+    background-color #000
+    height 300px
+    top -30%
+  .link
+    display block
+    width 180px
+    height 50px
+    line-height 46px
+    text-align center
+    margin 60px auto
+    background-color #fff
+    color #000
+    font-size 14px
+    font-weight 900
+    letter-spacing 3px
+    box-sizing border-box
+    transition .2s all ease-in-out
+    border solid 2px transparent
+    &:hover 
+      cursor pointer
+      color #fff
+      border solid 2px #fff
+      background-color transparent
+    
 .after-page-content
   width 880px 
   height 380px
@@ -275,6 +335,17 @@ export default {
             ]
         }
     },
+    mounted(){
+      window.addEventListener('scroll',this.handleScroll)
+    },
+    methods:{
+      handleScroll(e){
+        this.$store.state.scroll = e.scrollTop
+      }     
+    },
+    destroyed(){
+      window.removeEventListener('scroll',this.handleScroll)
+    }
 }
 </script>
 
