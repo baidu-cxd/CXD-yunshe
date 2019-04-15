@@ -192,7 +192,7 @@
       margin-top 20px
       background-color #000
       color #fff
-      font-size 14px
+      font-size 12px
       font-weight 900
       letter-spacing 3px
       box-sizing border-box
