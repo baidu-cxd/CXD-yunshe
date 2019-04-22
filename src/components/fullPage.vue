@@ -35,27 +35,14 @@ export default {
             max : this.max - 1,
             now : 0
         },
-        window.addEventListener('mousewheel', (e)=>{
-            var direction = e.deltaY>0? 'down':'up'; 
-            if(this.$store.state.scroll == 0) {
-              this.scrollDataStack += e.deltaY
-            }
-            if(this.scrollDataStack >= 100){
-                this.scrollDataStack = 0
-                this.handleScroll(direction) 
-            } else if (this.scrollDataStack < -100) {
-                this.scrollDataStack = 0
-                this.handleScroll(direction)                 
-            }
-            }, true); 
+        window.addEventListener('mousewheel', this.listeScroll, true)
     },
     beforeDestroy() {
-        this.$store.state.fullPage = {
-            max : this.max - 1,
-            now : 0
-        },
         console.log('销毁')
-        window.removeEventListener('mousewheel', (e)=>{
+        window.removeEventListener('mousewheel',this.listeScroll, true)
+    },
+    methods: {
+        listeScroll(e){
             var direction = e.deltaY>0? 'down':'up'; 
             this.scrollDataStack += e.deltaY
             if(this.scrollDataStack >= 100){
@@ -65,9 +52,7 @@ export default {
                 this.scrollDataStack = 0
                 this.handleScroll(direction)                 
             }
-            }, true); 
-    },
-    methods: {
+        },
         changePage(direction) {
             console.log(this.$store.state.fullPage.max,this.$store.state.fullPage.now,this.max)
             if (direction === 'down') {
