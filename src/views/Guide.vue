@@ -1,7 +1,7 @@
 <template>
     <div class="guide">
       <!-- 全屏滚动的区域 --> 
-      <fullPage :max="4" ref="fullpage">
+      <fullPage :max="4" ref="fullpage" key="guide">
         <!-- 首屏 --> 
         <div class="full-page-child" id="child-0" key="child-0" v-if="this.$store.state.fullPage.now === 0" slot="group">
           <video src="https://cxd-public.cdn.bcebos.com/cxd-guide/bg.mp4" autoplay="autoplay" muted="muted" loop="loop"></video>

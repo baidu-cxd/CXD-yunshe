@@ -37,7 +37,9 @@ export default {
         },
         window.addEventListener('mousewheel', (e)=>{
             var direction = e.deltaY>0? 'down':'up'; 
-            this.scrollDataStack += e.deltaY
+            if(this.$store.state.scroll == 0) {
+              this.scrollDataStack += e.deltaY
+            }
             if(this.scrollDataStack >= 100){
                 this.scrollDataStack = 0
                 this.handleScroll(direction) 
@@ -52,7 +54,7 @@ export default {
             max : this.max - 1,
             now : 0
         },
-        console.log('hah')
+        console.log('销毁')
         window.removeEventListener('mousewheel', (e)=>{
             var direction = e.deltaY>0? 'down':'up'; 
             this.scrollDataStack += e.deltaY
@@ -67,6 +69,7 @@ export default {
     },
     methods: {
         changePage(direction) {
+            console.log(this.$store.state.fullPage.max,this.$store.state.fullPage.now,this.max)
             if (direction === 'down') {
                 if (this.$store.state.fullPage.now < this.$store.state.fullPage.max) {
                     this.$store.state.fullPage.now += 1

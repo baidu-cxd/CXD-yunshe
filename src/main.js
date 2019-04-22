@@ -3,8 +3,10 @@ import "nprogress/nprogress.css"
 import App from './App.vue'
 import router from './router'
 import store from './store'
-import vuescroll from 'vuescroll';
+import vuescroll from 'vuescroll'
 import NProgress from "nprogress"
+import axios from 'axios'
+import qs from 'qs'
 
 // 加载进度条控制
 
@@ -40,6 +42,9 @@ Vue.use(vuescroll, {
 });
 
 Vue.config.productionTip = false
+
+Vue.prototype.$axios = axios 
+Vue.prototype.qs = qs   
 
 new Vue({
   router,
