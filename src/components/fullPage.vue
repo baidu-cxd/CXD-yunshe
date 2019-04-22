@@ -18,10 +18,6 @@
   position absolute
   top 0
   left 0
-  &#child-2
-    background-color yellow
-  &#child-3
-    background-color black
 </style>
 
 <script>
@@ -29,7 +25,8 @@ export default {
     data() {
         return {
             transitionDirection : 'full-page-down',
-            scrolling: false
+            scrolling: false,
+            scrollDataStack: 0,
         }
     },
     props: ['max'],
@@ -40,17 +37,32 @@ export default {
         },
         window.addEventListener('mousewheel', (e)=>{
             var direction = e.deltaY>0? 'down':'up'; 
-            this.handleScroll(direction) 
+            this.scrollDataStack += e.deltaY
+            if(this.scrollDataStack >= 100){
+                this.scrollDataStack = 0
+                this.handleScroll(direction) 
+            } else if (this.scrollDataStack < -100) {
+                this.scrollDataStack = 0
+                this.handleScroll(direction)                 
+            }
             }, true); 
     },
-    destroyed() {
+    beforeDestroy() {
         this.$store.state.fullPage = {
             max : this.max - 1,
             now : 0
         },
+        console.log('hah')
         window.removeEventListener('mousewheel', (e)=>{
             var direction = e.deltaY>0? 'down':'up'; 
-            this.handleScroll(direction) 
+            this.scrollDataStack += e.deltaY
+            if(this.scrollDataStack >= 100){
+                this.scrollDataStack = 0
+                this.handleScroll(direction) 
+            } else if (this.scrollDataStack < -100) {
+                this.scrollDataStack = 0
+                this.handleScroll(direction)                 
+            }
             }, true); 
     },
     methods: {
