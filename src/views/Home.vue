@@ -28,7 +28,9 @@
 <style lang="stylus">
 .home
   .full-page-child
-    min-height 100%
+    height 100%
+  #child-1
+    margin-top 80px
 .home-content
   h2
     text-align center
@@ -38,7 +40,6 @@
 <script>
 import docBox from '@/components/docBox.vue'
 import fullPage from '@/components/fullPage.vue'
-import {getArticle, getProjects} from '@/api/api.js'
 import {resolveDocList} from '@/util.js'
 export default {
   name: 'home',
@@ -65,11 +66,15 @@ export default {
     },    
     resolveData() {
       let data
-      getArticle.then(res=>{
-        this.articles = res.data
+      this.$axios
+        .get('/repos/277236/docs')
+        .then(res=>{
+          this.articles = res.data
         }) 
-      getProjects.then(res=>{
-        this.projects = res.data
+      this.$axios
+        .get('/repos/277389/docs')
+        .then(res=>{
+          this.projects = res.data
         }) 
     },
     resolveDocList(kind){

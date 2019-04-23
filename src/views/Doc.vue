@@ -1,7 +1,7 @@
 <template>
     <div class="doc">
       <vue-scroll @handle-scroll="handleScroll">
-      <div class="doc-content" v-html="doc"> {{ doc }}</div>
+        <div class="doc-content" v-html="doc"> {{ doc }}</div>
       </vue-scroll>
     </div>
 </template>
@@ -37,7 +37,6 @@ export default {
       this.$axios
         .get(recentUrl)
         .then(res=>{
-          console.log('nowGet')
           this.doc = res.data.data.body_html
         }) 
     },      
