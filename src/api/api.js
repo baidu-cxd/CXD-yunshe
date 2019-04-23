@@ -6,16 +6,16 @@ var cxdAxios = axios.create({
         'X-Auth-Token' : 'uQ2Fi6q5PAfpivhDqRU63GbqvX0FBgAGAc5BYedj',
     }
 });
-var get = async function() {
+var getConsole3 = async function() {
     const res = await cxdAxios.get('/repos/261691')
     return res
 }
- 
-  
- var func2 = function() {
-    console.log("func2");
- };
-  
+var getDocs = async function(url) {
+    const res = await cxdAxios.get(url)
+    return res
+}
+
 module.exports = {
-    getArticle : get()
+    getArticle : getDocs('/repos/277236/docs'),
+    getProjects : getDocs('/repos/277389/docs'),
 }

@@ -38,8 +38,8 @@ export default {
         window.addEventListener('mousewheel', this.listeScroll, true)
     },
     beforeDestroy() {
-        console.log('销毁')
         window.removeEventListener('mousewheel',this.listeScroll, true)
+        this.$store.state.fullPage.now = 0
     },
     methods: {
         listeScroll(e){
@@ -54,7 +54,6 @@ export default {
             }
         },
         changePage(direction) {
-            console.log(this.$store.state.fullPage.max,this.$store.state.fullPage.now,this.max)
             if (direction === 'down') {
                 if (this.$store.state.fullPage.now < this.$store.state.fullPage.max) {
                     this.$store.state.fullPage.now += 1

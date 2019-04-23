@@ -70,7 +70,7 @@ export default {
     resolvePath() {
       let path = this.$store.state.path
       path = '/' + path.split("/")[1];
-      if (path === '/cxd') {
+      if (path === '/cxd' || path === '/projects'|| path === '/articles') {
         return '/'
       } else {
         return path

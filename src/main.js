@@ -43,7 +43,15 @@ Vue.use(vuescroll, {
 
 Vue.config.productionTip = false
 
-Vue.prototype.$axios = axios 
+var cxdAxios = axios.create({
+  baseURL: 'https://www.yuque.com/api/v2/',
+  timeout: 30000,
+  headers: {
+      'X-Auth-Token' : 'uQ2Fi6q5PAfpivhDqRU63GbqvX0FBgAGAc5BYedj',
+  }
+});
+
+Vue.prototype.$axios = cxdAxios
 Vue.prototype.qs = qs   
 
 new Vue({

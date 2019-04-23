@@ -1,6 +1,5 @@
 <template>
   <div class="home">
-    这是首页
     <!-- 全屏滚动的区域 --> 
     <fullPage :max="2" ref="fullpage" key="home">
       <!-- 首屏 --> 
@@ -8,12 +7,17 @@
         id="child-0" key="child-0" 
         v-if="this.$store.state.fullPage.now === 0" slot="group">
       </div>
-      <!-- 第二屏 --> 
-      <div class="full-page-child" 
+      <!-- 底部部分 --> 
+      <div class="full-page-child home-content" 
         id="child-1" key="child-1" 
         v-if="this.$store.state.fullPage.now === 1" slot="group">
         <vue-scroll @handle-scroll="handleScroll">
-          {{article.data}}
+          <!-- 项目 --> 
+          <h2>Projects</h2>
+          <docBox :docList='resolveDocList("projects")'/>
+          <!-- 文章 --> 
+          <h2>Articles</h2>
+          <docBox :docList='resolveDocList("articles")'/>
         </vue-scroll>
       </div>
     </fullPage>
@@ -25,26 +29,27 @@
 .home
   .full-page-child
     min-height 100%
-    // 第一屏样式
-    &#child-0
-      background-color red
-    // 第二屏样式
-    &#child-1
-      padding 80px
+.home-content
+  h2
+    text-align center
 </style>
 
 
 <script>
+import docBox from '@/components/docBox.vue'
 import fullPage from '@/components/fullPage.vue'
-import {getArticle} from '@/api/api.js'
+import {getArticle, getProjects} from '@/api/api.js'
+import {resolveDocList} from '@/util.js'
 export default {
   name: 'home',
   components: { 
-    fullPage
+    fullPage,
+    docBox
   },
   data() {
     return {
-      article:{}
+      articles:{},
+      projects:{}
     }
   },
   mounted(){
@@ -61,9 +66,21 @@ export default {
     resolveData() {
       let data
       getArticle.then(res=>{
-        console.log(res.data)
-        this.article = res.data
+        this.articles = res.data
         }) 
+      getProjects.then(res=>{
+        this.projects = res.data
+        }) 
+    },
+    resolveDocList(kind){
+      let docData
+      if(kind === 'articles'){
+        docData = this.articles.data
+      } else if (kind === 'projects') {
+        docData = this.projects.data
+      }
+      docData = resolveDocList(docData, kind)
+      return docData.slice(0, 5) // 截取 6 个
     }
   }
 }
