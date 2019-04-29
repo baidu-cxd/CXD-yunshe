@@ -6,6 +6,7 @@
       <div class="full-page-child" 
         id="child-0" key="child-0" 
         v-if="this.$store.state.fullPage.now === 0" slot="group">
+        <HomeMainFullPage/>
       </div>
       <!-- 底部部分 --> 
       <div class="full-page-child home-content" 
@@ -14,13 +15,17 @@
         <vue-scroll @handle-scroll="handleScroll">
           <!-- 项目 --> 
           <h2>Projects</h2>
-          <docBox :docList='resolveDocList("projects")'/>
+          <docBox :docList='startResolveDocList("projects")'/>
           <!-- 文章 --> 
           <h2>Articles</h2>
-          <docBox :docList='resolveDocList("articles")'/>
+          <docBox :docList='startResolveDocList("articles")'/>
         </vue-scroll>
       </div>
     </fullPage>
+    <div class="banner-bg">
+      <div class="mask"></div>
+      <video src="https://cxd-public.cdn.bcebos.com/cxd-guide/bg.mp4" autoplay="autoplay" muted loop/>
+    </div>
   </div>
 </template>
 
@@ -29,28 +34,56 @@
 .home
   .full-page-child
     height 100%
+    overflow hidden
+  #child-0
+    background-color transparent
   #child-1
     margin-top 80px
 .home-content
   h2
     text-align center
+.banner-bg
+  width 100%
+  position relative
+  z-index -1
+  .mask
+    width 100%
+    height 100%
+    background-color #fff
+    opacity 1
+    animation video-in .2s ease-in-out .8s forwards
+    position absolute
+    top 0
+    z-index -1
+  video
+    position relative
+    width 100%
+    z-index -2
+@keyframes video-in
+  0%
+    opacity 1
+  100%
+    opacity 0
 </style>
 
 
 <script>
 import docBox from '@/components/docBox.vue'
 import fullPage from '@/components/fullPage.vue'
-import {resolveDocList} from '@/util.js'
+import HomeMainFullPage from '@/components/HomeMainFullPage.vue'
+import {resolveDocList,resolveCover} from '@/util.js'
 export default {
   name: 'home',
   components: { 
     fullPage,
-    docBox
+    docBox,
+    HomeMainFullPage
   },
   data() {
     return {
       articles:{},
-      projects:{}
+      projects:{},
+      cover:{},
     }
   },
   mounted(){
@@ -76,15 +109,21 @@ export default {
         .then(res=>{
           this.projects = res.data
         }) 
+      this.$axios
+        .get('/repos/cxd/config/docs/articles')
+        .then(res=>{
+          this.cover = res.data.data.body_html.match(/\<img[^\>]+\>/g)
+        }) 
     },
-    resolveDocList(kind){
+    startResolveDocList(kind){
+      let coverData = resolveCover(this.cover)
       let docData
       if(kind === 'articles'){
         docData = this.articles.data
       } else if (kind === 'projects') {
         docData = this.projects.data
       }
-      docData = resolveDocList(docData, kind)
+      docData = resolveDocList(docData, kind, coverData)
       return docData.slice(0, 5) // 截取 6 个
     }
   }

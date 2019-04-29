@@ -1,6 +1,6 @@
 <template>
     <div class="doc">
-      <vue-scroll @handle-scroll="handleScroll">
+      <vue-scroll>
         <div class="doc-content" v-html="doc"> {{ doc }}</div>
       </vue-scroll>
     </div>
