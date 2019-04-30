@@ -29,7 +29,7 @@ export default {
               cnName: '云舍首页',
           },
           {
-              link: '/docs/poject',
+              link: '/docs/projects',
               name: 'PROJECT',
               cnName: '项目总结'
           },

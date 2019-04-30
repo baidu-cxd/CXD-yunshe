@@ -43,6 +43,22 @@ export function resolveDocList(docs,kind,coverData) {
     return resolvedDocs
 }
 
+export function resolveDocHtml(doc) {
+  let resolvedDoc = {}
+  const des = resolveData(doc.data.custom_description)
+  // 获取文章html 部分
+  resolvedDoc.html = doc.data.body_html
+  // 获取文章背景图
+  resolvedDoc.hero = des.hero || 'no-img'
+  // 获取文章名称
+  const title = doc.data.title
+  resolvedDoc.title = title.replace(/\【(\S*)\】/,"").replace(/\{(\S*)\}/,"");
+  // 获取英文名
+  resolvedDoc.english = des.endlish || 'By Cxd'
+  console.log(doc)
+  return resolvedDoc
+}
+
 export function resolveCover(covers) {
   let resolvedCover = {}
   covers.forEach(data=>{
@@ -69,6 +85,15 @@ function resolveData(des){
   }
   if(des.indexOf('tag')>-1) {
     resolveData.tag = des.match(/tag:(\S*);/)[1]
+  }
+  if(des.indexOf('hero')>-1) {
+    resolveData.hero = des.match(/hero:(\S*);/)[1]
+  }
+  if(des.indexOf('kind')>-1) {
+    resolveData.kind = des.match(/kind:(\S*);/)[1]
+  }
+  if(des.indexOf('english')>-1) {
+    resolveData.english = des.match(/english:(\S*);/)[1]
   }
   // console.log(resolveData)
   return resolveData
