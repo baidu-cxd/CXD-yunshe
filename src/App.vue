@@ -44,6 +44,7 @@ export default {
 
 // 加载全局样式文件
 @import "/stylus/animation.styl"
+@import "/stylus/components.styl"
 // 全局样式
 body
     margin 0

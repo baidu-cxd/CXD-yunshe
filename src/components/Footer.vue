@@ -1,6 +1,6 @@
 <template>
     <div class="cxd-footer" :class="kind">
-        <a href="http://yunshe.design/">CxD</a>
+        <router-link to="/">CxD</router-link>
         <a href="http://bce-website.cdn.bcebos.com/">Cloud Lab</a>
         <p class="copy">Copyright ©2018 Cxd-Design</p>
     </div>

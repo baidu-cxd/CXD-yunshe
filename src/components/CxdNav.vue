@@ -3,12 +3,12 @@
       <div class="nav-content">
         <transition name="fade-scroll">
           <div class="animation-content"  @click="close()" v-if="this.$store.state.isGobalNavOpen">
-            <router-link 
-                v-for="nav in navData" 
-                :key="nav.link"
-                :to='nav.link'>
+            <div v-for="nav in navData" :key="nav.link">
+              <router-link  :to='nav.link' v-if="nav.type !== 'out'">
                 <p class="en">{{nav.name}}</p>
-            </router-link>
+              </router-link>
+              <a :href="nav.link" v-else><p class="en">{{nav.name}}</p></a>
+            </div>
           </div>
         </transition>
       </div>
@@ -26,7 +26,7 @@ export default {
           {
               link: '/',
               name: 'HOME',
-              cnName: '云舍首页'
+              cnName: '云舍首页',
           },
           {
               link: '/poject',
@@ -44,9 +44,10 @@ export default {
               cnName: '设计规范'
           },
           {
-              link: '/resource',
+              link: 'http://img.yunshe.design',
               name: 'RESOURCE',
-              cnName: '设计资源'
+              cnName: '设计资源',
+              type: 'out'
           },
           {
               link: '/lab',

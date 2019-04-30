@@ -13,12 +13,28 @@
         id="child-1" key="child-1" 
         v-if="this.$store.state.fullPage.now === 1" slot="group">
         <vue-scroll @handle-scroll="handleScroll">
+          <!-- 关于我们 --> 
+          <HomeAboutUs/>
           <!-- 项目 --> 
-          <h2>Projects</h2>
-          <docBox :docList='startResolveDocList("projects")'/>
+          <docBox :docList='startResolveDocList("projects")'>
+            <h2 slot="title">PROJECTS</h2>
+            <router-link slot="action" to="/cxd/projects">
+              <div class="cxd-button-white">READ MORE</div>
+            </router-link>
+          </docBox>
           <!-- 文章 --> 
-          <h2>Articles</h2>
-          <docBox :docList='startResolveDocList("articles")'/>
+          <docBox :docList='startResolveDocList("articles")'>
+             <h2 slot="title">Articles</h2>
+            <router-link slot="action" to="/cxd/articles">
+              <div class="cxd-button-white">READ MORE</div>
+            </router-link>
+          </docBox>
+          <!-- 地图 --> 
+          <HomeMap/>
+          <!-- 招聘 --> 
+          <Recruit/>
+          <!-- 页脚 --> 
+          <Footer/>
         </vue-scroll>
       </div>
     </fullPage>
@@ -32,16 +48,20 @@
 
 <style lang="stylus">
 .home
+  .cxd-footer
+    position relative
   .full-page-child
     height 100%
     overflow hidden
   #child-0
     background-color transparent
   #child-1
-    margin-top 80px
+    margin-top 0
 .home-content
+  overflow hidden
   h2
     text-align center
+    font-weight 900
 .banner-bg
   width 100%
   position relative
@@ -71,13 +91,21 @@
 import docBox from '@/components/docBox.vue'
 import fullPage from '@/components/fullPage.vue'
 import HomeMainFullPage from '@/components/HomeMainFullPage.vue'
+import HomeAboutUs from '@/components/HomeAboutUs.vue'
+import HomeMap from '@/components/HomeMap.vue'
+import Footer from '@/components/Footer.vue'
+import Recruit from '@/components/Recruit.vue'
 import {resolveDocList,resolveCover} from '@/util.js'
 export default {
   name: 'home',
   components: { 
     fullPage,
     docBox,
-    HomeMainFullPage
+    HomeMainFullPage,
+    HomeAboutUs,
+    HomeMap,
+    Footer,
+    Recruit
   },
   data() {
     return {
