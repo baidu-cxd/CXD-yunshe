@@ -16,19 +16,19 @@
           <!-- 关于我们 --> 
           <HomeAboutUs/>
           <!-- 项目 --> 
-          <docBox :docList='startResolveDocList("projects")'>
+          <docBoxHome :docList='startResolveDocList("projects")'>
             <h2 slot="title">PROJECTS</h2>
-            <router-link slot="action" to="/cxd/projects">
+            <router-link slot="action" to="/docs/projects">
               <div class="cxd-button-white">READ MORE</div>
             </router-link>
-          </docBox>
+          </docBoxHome>
           <!-- 文章 --> 
-          <docBox :docList='startResolveDocList("articles")'>
-             <h2 slot="title">Articles</h2>
-            <router-link slot="action" to="/cxd/articles">
+          <docBoxHome :docList='startResolveDocList("articles")'>
+             <h2 slot="title">ARTICLES</h2>
+            <router-link slot="action" to="/docs/articles">
               <div class="cxd-button-white">READ MORE</div>
             </router-link>
-          </docBox>
+          </docBoxHome>
           <!-- 地图 --> 
           <HomeMap/>
           <!-- 招聘 --> 
@@ -88,7 +88,7 @@
 
 
 <script>
-import docBox from '@/components/docBox.vue'
+import docBoxHome from '@/components/docBoxHome.vue'
 import fullPage from '@/components/fullPage.vue'
 import HomeMainFullPage from '@/components/HomeMainFullPage.vue'
 import HomeAboutUs from '@/components/HomeAboutUs.vue'
@@ -100,7 +100,7 @@ export default {
   name: 'home',
   components: { 
     fullPage,
-    docBox,
+    docBoxHome,
     HomeMainFullPage,
     HomeAboutUs,
     HomeMap,

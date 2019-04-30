@@ -4,7 +4,9 @@
         <div class="card-content">
           <div v-for="doc in docList" :key="doc.id" class="doc-item">
             <router-link :to="doc.link">
-              <img :src="doc.cover" alt="">
+              <div class="img-content">
+                <img :src="doc.cover" alt="">
+              </div>
               <h3>{{doc.title}}</h3>
               <p class="excerpt">{{doc.excerpt}}</p>
               <p class="link">READ MORE</p>
@@ -33,7 +35,7 @@ export default {
     margin 50px auto 0 
   .card-content
     margin auto 
-    width 1250px
+    width 1200px
     overflow hidden
   .h2
     font-size 24px
@@ -48,9 +50,22 @@ export default {
     &:hover
       .under-line
         width 80px
-    img
+      .img-content img  
+        width 100%
+        transform translate(-50%,-50%) scale(1.2)
+    .img-content
       width 100%
       height 245px
+      background-color #000
+      overflow hidden
+      position relative
+      img 
+        transition .6s all ease-in-out
+        width 100%
+        position absolute
+        top 50%
+        left 50%
+        transform translate(-50%,-50%)
     h3
       font-size 24px
       line-height 38px
@@ -60,6 +75,12 @@ export default {
     p.excerpt
       font-size 14px
       line-height 26px
+      height 26px
+      display block
+      overflow hidden
+      width 80%
+      white-space nowrap
+      text-overflow ellipsis
       margin 10px 0 15px
       color #3A3A3A
     p.link

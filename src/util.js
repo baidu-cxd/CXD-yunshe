@@ -1,6 +1,6 @@
 export function resolveDocList(docs,kind,coverData) {
     let resolvedDocs = []
-    docs.map(doc=>{
+    docs.forEach(doc=>{
         // 发布后的文章才会显示
         if (doc.status == 1) {
           let data = {}
@@ -29,8 +29,14 @@ export function resolveDocList(docs,kind,coverData) {
               data.cover = 'no-img'
             }
           }
+          data.tag = des.tag || ''
+          if (data.tag.indexOf('/')>-1){
+            data.tag = data.tag.split('/')
+          } else {
+            data.tag = [data.tag]
+          }
           data.excerpt = des.des
-          data.link = kind + '/' + doc.slug
+          data.link = '/' + kind + '/' + doc.slug
           resolvedDocs.push(data)
         }
       })
@@ -39,11 +45,11 @@ export function resolveDocList(docs,kind,coverData) {
 
 export function resolveCover(covers) {
   let resolvedCover = {}
-  covers.map(data=>{
+  covers.forEach(data=>{
     let cover = {title:'', src:''}
     // 获取文件名
     cover.title = data.match(/name\=.+\.[a-z]+/)[0].split('name=')[1]
-    // 获取文件链接
+    // 获取图片 url
     cover.src = data.match(/src\=\".+width\=[0-9]+/)[0].split('src="')[1]
     // 生成成对象模式
     let key = cover.title;
@@ -60,6 +66,9 @@ function resolveData(des){
   }
   if(des.indexOf('cover')>-1) {
     resolveData.cover = des.match(/cover:(\S*);/)[1]
+  }
+  if(des.indexOf('tag')>-1) {
+    resolveData.tag = des.match(/tag:(\S*);/)[1]
   }
   // console.log(resolveData)
   return resolveData

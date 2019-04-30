@@ -29,12 +29,12 @@ export default {
               cnName: '云舍首页',
           },
           {
-              link: '/poject',
+              link: '/docs/poject',
               name: 'PROJECT',
               cnName: '项目总结'
           },
           {
-              link: '/articles',
+              link: '/docs/articles',
               name: 'ARTICLES',
               cnName: '团队博客'
           },
@@ -55,7 +55,7 @@ export default {
               cnName: '云舍实验室'
           },
           {
-              link: '/about',
+              link: '/cxd/about',
               name: 'ABOUT',
               cnName: '关于我们'
           }

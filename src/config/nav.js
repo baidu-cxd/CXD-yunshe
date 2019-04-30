@@ -1,12 +1,12 @@
 navData = {
     '/' : [ // 首页导航
       {
-        link : '/cxd/project',
-        name : 'PROJECT',
+        link : '/docs/projects',
+        name : 'PROJECTS',
         cnName : '项目总结'
       },
       {
-        link : '/cxd/articles',
+        link : '/docs/articles',
         name : 'ARTICLES',
         cnName : '团队博客'
       }, 
