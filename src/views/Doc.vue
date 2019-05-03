@@ -12,13 +12,17 @@
         </div>
         <!-- 文章正文 -->
         <div class="doc-content" v-html="doc"> {{ doc }}</div>
-        <!-- 用户名 --> 
+        <!-- 用户信息等 --> 
         <div class="information">
           <div class="author">
             <img :src="author.medium_avatar_url" alt="">
             <p class="name">文章作者: {{author.name}}</p>
           </div>
         </div>
+        <!-- 翻页工具 --> 
+        <upNext/>
+        <!-- 文章推荐 --> 
+        <docBoxDocs :docList='resolveDocListDocs()'/>
         <Footer/>
       </vue-scroll>
     </div>
@@ -26,6 +30,10 @@
 
 <style lang="stylus">
 @import "../stylus/doc.styl"
+.doc
+  background-color #F8F9FA
+  .doc-box-docs
+    padding-top 40px
 .doc
   .information
     width 800px
@@ -98,9 +106,11 @@
 
 <script>
 import Footer from '@/components/Footer.vue'
-import {resolveDocHtml,resolveCover} from '@/util.js'
+import {resolveDocHtml,resolveDocList,resolveCover} from '@/util.js'
+import docBoxDocs from '@/components/docBoxDocs.vue'
+import upNext from '@/components/upNext.vue'
 export default {
-  components:{Footer},
+  components:{Footer,docBoxDocs,upNext},
   data(){
       return {
           doc : '',
@@ -108,13 +118,24 @@ export default {
           cover : '',
           english : '',
           title: '',
-          author: ''
+          author: '',
+          docs:{},
       }
   },
   mounted(){
     this.resolveDoc()
   },
   methods : {
+    resolveDocListDocs(){
+      const kind = this.$route.matched[0].name
+      let coverData = this.cover
+      let docData
+      docData = this.docs.data
+      if (docData){
+        docData = resolveDocList(docData, kind, coverData)
+        return docData.slice(0, 3) // 截取 3 个
+      }
+    },
     resolveUrl() {
       const recentUrlArray = window.location.href.split('/')
       const recentSlug = recentUrlArray[recentUrlArray.length - 1]
@@ -132,19 +153,24 @@ export default {
           let coverData = res.data.data.body_html.match(/\<img[^\>]+\>/g)
           this.cover = resolveCover(coverData)
         }) 
+      const url = '/repos/cxd/' + this.$route.matched[0].name + '/docs'
+      this.$axios
+        .get(url)
+        .then(res=>{
+          this.docs = res.data
+        }) 
       const recentUrl = this.resolveUrl()
       this.$axios
         .get(recentUrl)
         .then(res=>{
           const doc = res.data
-          console.log(doc)
+          // console.log(doc)
           const resolvedDoc = resolveDocHtml(doc)
           this.doc = resolvedDoc.html
           this.hero = resolvedDoc.hero
           this.title = resolvedDoc.title
           this.english = resolvedDoc.english
           this.author = doc.data.creator
-          console.log(this.author)
         }) 
     },      
   }

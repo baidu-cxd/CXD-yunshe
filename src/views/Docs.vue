@@ -69,7 +69,7 @@ export default {
       docData = this.docs.data
       if (docData){
         docData = resolveDocList(docData, kind, coverData)
-        return docData.slice(0, 5) // 截取 6 个
+        return docData.slice(0, 6) // 截取 6 个
       }
     }
   }

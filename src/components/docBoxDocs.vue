@@ -45,7 +45,7 @@ export default {
   .doc-item
     background-color #fff
     width 350px
-    height 460px
+    height 420px
     float left 
     overflow hidden
     margin 25px
@@ -77,6 +77,9 @@ export default {
       font-weight 700
       margin 20px 20px 0
       color #000
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
     p.excerpt
       font-size 14px
       line-height 26px

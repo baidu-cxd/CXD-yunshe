@@ -7,7 +7,7 @@
               <router-link  :to='nav.link' v-if="nav.type !== 'out'">
                 <p class="en">{{nav.name}}</p>
               </router-link>
-              <a :href="nav.link" v-else><p class="en">{{nav.name}}</p></a>
+              <a :href="nav.link" v-else target="_blank"><p class="en">{{nav.name}}</p></a>
             </div>
           </div>
         </transition>
