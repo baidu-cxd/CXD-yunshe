@@ -54,8 +54,7 @@ export function resolveDocHtml(doc) {
   const title = doc.data.title
   resolvedDoc.title = title.replace(/\【(\S*)\】/,"").replace(/\{(\S*)\}/,"");
   // 获取英文名
-  resolvedDoc.english = des.endlish || 'By Cxd'
-  console.log(doc)
+  resolvedDoc.english = des.english || 'By Cxd'
   return resolvedDoc
 }
 
@@ -78,22 +77,23 @@ export function resolveCover(covers) {
 function resolveData(des){
   let resolveData = {des: des}
   if(des.indexOf('des')>-1) {
-    resolveData.des = des.match(/des:(\S*);/)[1]
+    resolveData.des = des.match(/des\:(.*)/)[1]
   }
   if(des.indexOf('cover')>-1) {
-    resolveData.cover = des.match(/cover:(\S*);/)[1]
+    resolveData.cover = des.match(/cover\:(.*)/)[1]
   }
   if(des.indexOf('tag')>-1) {
-    resolveData.tag = des.match(/tag:(\S*);/)[1]
+    resolveData.tag = des.match(/tag\:(.*)/)[1]
   }
   if(des.indexOf('hero')>-1) {
-    resolveData.hero = des.match(/hero:(\S*);/)[1]
+    resolveData.hero = des.match(/hero\:(.*)/)[1]
   }
   if(des.indexOf('kind')>-1) {
-    resolveData.kind = des.match(/kind:(\S*);/)[1]
+    resolveData.kind = des.match(/kind\:(.*)/)[1]
+    // console.log(resolveData.kind)
   }
   if(des.indexOf('english')>-1) {
-    resolveData.english = des.match(/english:(\S*);/)[1]
+    resolveData.english = des.match(/english\:(.*)/)[1]
   }
   // console.log(resolveData)
   return resolveData

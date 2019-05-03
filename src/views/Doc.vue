@@ -4,11 +4,21 @@
         <div class="doc-imgcontent">
           <img :src="resolveHero(hero)" alt="">
           <div class="text-content">
-            <h1>{{title}}</h1>
-            <p>{{english}}</p>
+            <div class="text-content-inner">
+              <h1>{{title}}</h1>
+              <p>{{english}}</p>
+            </div>
           </div>
         </div>
+        <!-- 文章正文 -->
         <div class="doc-content" v-html="doc"> {{ doc }}</div>
+        <!-- 用户名 --> 
+        <div class="information">
+          <div class="author">
+            <img :src="author.medium_avatar_url" alt="">
+            <p class="name">文章作者: {{author.name}}</p>
+          </div>
+        </div>
         <Footer/>
       </vue-scroll>
     </div>
@@ -17,6 +27,28 @@
 <style lang="stylus">
 @import "../stylus/doc.styl"
 .doc
+  .information
+    width 800px
+    margin auto
+    overflow hidden
+    margin-bottom 80px
+    .author
+      height 40px
+      position relative
+      img
+        width 40px
+        height 40px
+        border-radius 100px
+        position absolute
+        top 0
+        lefto 0
+      p.name
+        line-height 40px
+        position absolute
+        top 0px
+        left 52px
+        font-size 14px
+        margin 0
   .cxd-footer
     position relative
   height 100%
@@ -24,7 +56,7 @@
   margin-top 80px
   width 100%
   height 420px
-  background-color #000
+  background-color #ccc
   overflow hidden
   position relative
   .text-content
@@ -35,11 +67,18 @@
     left 0
     background-color rgba(0,0,0,.8)
     transform translateY(-50%)
+    .text-content-inner
+      overflow hidden
+      position absolute
+      top 50%
+      transform translateY(-50%)
     h1
       color #fff
-      margin 60px 0 0 180px 
+      margin 0 0 0 180px 
       font-size 42px
       font-weight 900
+      width 600px
+      line-height 60px
     p
       color #ffffff
       margin 20px 0 0 180px 
@@ -54,7 +93,7 @@
 .doc-content
   overflow hidden
   width 800px
-  margin 80px auto
+  margin 80px auto 40px
 </style>
 
 <script>
@@ -68,7 +107,8 @@ export default {
           hero : '',
           cover : '',
           english : '',
-          title: ''
+          title: '',
+          author: ''
       }
   },
   mounted(){
@@ -97,11 +137,14 @@ export default {
         .get(recentUrl)
         .then(res=>{
           const doc = res.data
+          console.log(doc)
           const resolvedDoc = resolveDocHtml(doc)
           this.doc = resolvedDoc.html
           this.hero = resolvedDoc.hero
           this.title = resolvedDoc.title
           this.english = resolvedDoc.english
+          this.author = doc.data.creator
+          console.log(this.author)
         }) 
     },      
   }

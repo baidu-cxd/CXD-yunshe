@@ -16,12 +16,15 @@
           <transition name="fade-scroll">
             <div class="nav-animate-content" :key="resolvePath()" 
               v-if="!this.$store.state.isGobalNavOpen">
-              <router-link 
-                v-for="nav in resolveNavData()" 
-                :key="nav.link"
-                :to='nav.link'>
-                <p class="en">{{nav.name}}</p>
-              </router-link>
+              <span v-for="nav in resolveNavData()" :key="nav.link">
+                <router-link v-if="nav.type !== 'out'"
+                  :to='nav.link'>
+                  <p class="en">{{nav.name}}</p>
+                </router-link>
+                <a :href="nav.link" v-else target="_blank">
+                  <p class="en">{{nav.name}}</p>
+                </a>
+              </span>
               </div>
           </transition>
           <div class="humberger" @click="toggleGobalNav()"
@@ -70,7 +73,7 @@ export default {
     resolvePath() {
       let path = this.$store.state.path
       path = '/' + path.split("/")[1];
-      if (path === '/cxd' || path === '/docs') {
+      if (path === '/cxd' || path === '/docs' || path === '/articles' || path === '/projects') {
         return '/'
       } else {
         return path

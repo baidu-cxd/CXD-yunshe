@@ -12,7 +12,9 @@
             </div>
         </div>--> 
         <!-- 文章列表 --> 
-        <docBoxDocs :docList='resolveDocListDocs()'/>
+        <transition name="fade-router-view-anti">
+          <docBoxDocs :docList='resolveDocListDocs()' :key="$route.params.id"/>
+        </transition>
         <!-- 页脚 --> 
         <Footer/>
       </vue-scroll>
@@ -39,6 +41,11 @@ export default {
   },
   created(){
     this.resolveData()
+  },
+  watch:{
+  $route(to,from){
+    this.resolveData()
+  }
   },
   methods : { 
     resolveData() {

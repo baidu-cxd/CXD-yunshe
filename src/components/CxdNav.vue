@@ -50,11 +50,6 @@ export default {
               type: 'out'
           },
           {
-              link: '/lab',
-              name: 'LAB',
-              cnName: '云舍实验室'
-          },
-          {
               link: '/cxd/about',
               name: 'ABOUT',
               cnName: '关于我们'

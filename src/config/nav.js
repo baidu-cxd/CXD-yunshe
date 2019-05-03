@@ -18,18 +18,21 @@ navData = {
     ],
     '/guide' : [ // 设计规范导航
       {
-        link : '/guide/portal',
+        link : 'http://v3.yunshe.design/portal/',
         name : 'PORTAL',
+        type : 'out',
         cnName : '官  网'
       },
       {
-        link : '/guide/console',
+        link : 'http://v3.yunshe.design/console/',
         name : 'CONSOLE',
+        type : 'out',
         cnName : '控制台'
       },
       {
-        link : '/guide/motion',
+        link : 'http://v3.yunshe.design/animate/',
         name : 'MOTION',
+        type : 'out',
         cnName : '动  画'
       },
     ]

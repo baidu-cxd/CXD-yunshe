@@ -22,6 +22,21 @@
   opacity 0
   transform translateY(-100px)
 
+.fade-router-view-anti-leave-active 
+  transition all .2s ease-in-out
+.fade-router-view-anti-enter-active
+  transition all .3s ease-in-out .2s
+.fade-router-view-anti-enter-to, .fade-router-view-anti-leave
+  opacity 1
+  transform translateY(0px)
+.fade-router-view-anti-enter
+  opacity 0
+  transform translateY(40px)
+.fade-router-view-anti-leave-to
+  opacity 0
+  transform translateY(0px) scale(1.02)
+
+
 // 页面通用动画模块控制器 - 滚动切换动画
 
 .fade-scroll-leave-active 

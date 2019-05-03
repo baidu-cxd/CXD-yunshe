@@ -72,6 +72,9 @@ export default {
       font-weight 700
       margin 25px 0 0 0
       color #000
+      overflow hidden
+      white-space nowrap
+      text-overflow ellipsis
     p.excerpt
       font-size 14px
       line-height 26px

@@ -45,11 +45,12 @@ export default {
   .doc-item
     background-color #fff
     width 350px
-    height 420px
+    height 460px
     float left 
     overflow hidden
     margin 25px
     transition .4s all ease-in-out
+    position relative
     &:hover
       box-shadow 0px 4px 20px rgba(0,0,0,.1)
       .under-line
@@ -91,10 +92,13 @@ export default {
       color #000
       font-weight 900
       margin 15px 0 5px
-    .tag
-      margin 20px 
+    div.tag
+      margin 0 20px 
       width 205px
       overflow hidden
+      position absolute
+      bottom 20px
+      left 0
     p.tag
       color #3A3A3A
       font-size 12px
