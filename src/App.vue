@@ -51,6 +51,7 @@ body
     padding 0
   html, body, #app, .cxd
     width 100%
+    min-width 1400px
     height 100%
     overflow hidden
   a

@@ -145,6 +145,7 @@ export default {
     },
     startResolveDocList(kind){
       let coverData = resolveCover(this.cover)
+      console.log(coverData)
       let docData
       if(kind === 'articles'){
         docData = this.articles.data
@@ -152,7 +153,7 @@ export default {
         docData = this.projects.data
       }
       docData = resolveDocList(docData, kind, coverData)
-      return docData.slice(0, 5) // 截取 6 个
+      return docData.slice(0, 6) // 截取 6 个
     }
   }
 }

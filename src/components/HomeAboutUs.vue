@@ -9,7 +9,7 @@
             以助力公司实现产品更大的价值化 <br/>
             我们的愿景是成为拥抱变化、打破常规、预见未来的团队
         </p>
-        <router-link to="/about">
+        <router-link to="/cxd/about">
           <div class="cxd-button-white">READ MORE</div>
         </router-link>
         <div class="bg"></div>

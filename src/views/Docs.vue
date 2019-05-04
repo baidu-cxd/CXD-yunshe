@@ -1,6 +1,6 @@
 <template>
     <div class="docs">
-      <vue-scroll>
+      <vue-scroll @handle-scroll="handleScroll">
         <h2>{{ $route.params.id.toUpperCase()}}</h2>
         <div class="line"></div>
         <!--<div class="select">
@@ -71,7 +71,10 @@ export default {
         docData = resolveDocList(docData, kind, coverData)
         return docData.slice(0, 6) // 截取 6 个
       }
-    }
+    },
+    handleScroll(e){
+        this.$store.state.scroll = e.scrollTop
+    },  
   }
 }
 </script>
@@ -79,6 +82,7 @@ export default {
 
 <style lang="stylus">
 .docs
+  animation component-move-in .4s ease-in-out 
   .cxd-footer
     position relative
   background-color #F8F9FA

@@ -180,7 +180,7 @@ export default {
             width 100%
             background-color #000
             position absolute
-            bottom -20px
+            bottom -14px
             left 0
             transition .2s all ease-in-out .3s
     .line
