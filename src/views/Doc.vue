@@ -1,6 +1,6 @@
 <template>
     <div class="doc">
-      <vue-scroll>
+       <vue-scroll @handle-scroll="handleScroll" ref='vs'>
         <div class="doc-imgcontent">
           <img :src="resolveHero(hero)" alt="">
           <div class="text-content">
@@ -125,7 +125,22 @@ export default {
   mounted(){
     this.resolveDoc()
   },
+  watch: {
+    '$route' (to, from) {
+        this.$refs['vs'].scrollTo(
+            {
+                y: 0
+            },
+          300,
+          'easeInQuad'
+        );
+      this.resolveDoc()
+    }
+  },
   methods : {
+    handleScroll(e){
+        this.$store.state.scroll = e.scrollTop
+    }, 
     resolveDocListDocs(){
       const kind = this.$route.matched[0].name
       let coverData = this.cover

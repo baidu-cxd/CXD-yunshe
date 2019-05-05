@@ -8,6 +8,7 @@
     "gitpush": "bash deploy.sh"
   },
   "dependencies": {
+    "http-proxy-middleware": "^0.19.1",
     "vue": "^2.6.6",
     "vue-router": "^3.0.1",
     "vuescroll": "^4.11.2",
