@@ -57,6 +57,8 @@
     background-color transparent
   #child-1
     margin-top 0
+  .cxd-header.top
+    background-color transparent 
 .home-content
   overflow hidden
   h2

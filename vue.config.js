@@ -43,7 +43,7 @@ module.exports = {
     https: false,
     hotOnly: false, // See https://github.com/vuejs/vue-cli/blob/dev/docs/cli-service.md#configuring-proxy
     proxy: {
-        '/api/':{//此处并非一定和url一致。
+        '/api/':{
            target:'https://www.yuque.com/api/v2/',
            changeOrigin:true,//允许跨域
            pathRewrite:{

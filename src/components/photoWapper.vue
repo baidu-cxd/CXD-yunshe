@@ -27,29 +27,57 @@ export default {
         return {'photo' : 
         [
             {
-                '团建活动照片' : require('@/assets/about/photo/1.png'),
-                '这就是一只猫' : require('@/assets/about/photo/2.jpg'),
-                '这也就是一只猫' : require('@/assets/about/photo/3.jpg'),
+                '11' : require('@/assets/about/photo/1.1@2x.png'),
+                '12' : require('@/assets/about/photo/1.2@2x.png'),
+                '13' : require('@/assets/about/photo/1.3@2x.png'),
+                '14' : require('@/assets/about/photo/1.4@2x.png'),
+                '15' : require('@/assets/about/photo/1.5@2x.png'),
+                '16' : require('@/assets/about/photo/1.6@2x.png'),
             },
             {
-                '照片测试' : require('@/assets/about/photo/4.jpeg'),
-                '风景图测试' : {link : require('@/assets/about/photo/5.jpeg'), name : '风景图'},
+                '21' : require('@/assets/about/photo/2.1@2x.png'),
+                '22' : require('@/assets/about/photo/2.2@2x.png'),
+                '23' : require('@/assets/about/photo/2.3@2x.png'),
+                '24' : require('@/assets/about/photo/2.4@2x.png'),
+                '25' : require('@/assets/about/photo/2.5@2x.png'),
+                '26' : require('@/assets/about/photo/2.6@2x.png'),
+                '27' : require('@/assets/about/photo/2.7@2x.png'),
             },
             {
-                '一堆南瓜' : require('@/assets/about/photo/6.jpeg'),
-                '一个窗子' : require('@/assets/about/photo/7.jpeg'),
+                '31' : require('@/assets/about/photo/3.1@2x.png'),
+                '32' : require('@/assets/about/photo/3.2@2x.png'),
+                '33' : require('@/assets/about/photo/3.3@2x.png'),
+                '34' : require('@/assets/about/photo/3.4@2x.png'),
+                '35' : require('@/assets/about/photo/3.5@2x.png'),
+                '36' : require('@/assets/about/photo/3.6@2x.png'),
+                '37' : require('@/assets/about/photo/3.7@2x.png'),
             },
             {
-                '银河真好看' : require('@/assets/about/photo/8.jpeg'),
-                '瞅你咋滴' : require('@/assets/about/photo/9.jpeg'),
+                '41' : require('@/assets/about/photo/4.1@2x.png'),
+                '42' : require('@/assets/about/photo/4.2@2x.png'),
+                '43' : require('@/assets/about/photo/4.3@2x.png'),
+                '44' : require('@/assets/about/photo/4.4@2x.png'),
+                '45' : require('@/assets/about/photo/4.5@2x.png'),
+                '46' : require('@/assets/about/photo/4.6@2x.png'),
+                '47' : require('@/assets/about/photo/4.7@2x.png'),
             },
             {
-                '给你一拳' : require('@/assets/about/photo/10.jpeg'),
-                '这是个超市吧' : require('@/assets/about/photo/13.jpeg'),
+                '51' : require('@/assets/about/photo/5.1@2x.png'),
+                '52' : require('@/assets/about/photo/5.2@2x.png'),
+                '53' : require('@/assets/about/photo/5.3@2x.png'),
+                '54' : require('@/assets/about/photo/5.4@2x.png'),
+                '55' : require('@/assets/about/photo/5.5@2x.png'),
+                '56' : require('@/assets/about/photo/5.6@2x.png'),
+                '57' : require('@/assets/about/photo/5.7@2x.png'),
             },
             {
-                '有一点好玩' : require('@/assets/about/photo/12.jpeg'),
-                '火车没出轨' : require('@/assets/about/photo/11.jpeg'),
+                '61' : require('@/assets/about/photo/6.1@2x.png'),
+                '62' : require('@/assets/about/photo/6.2@2x.png'),
+                '63' : require('@/assets/about/photo/6.3@2x.png'),
+                '64' : require('@/assets/about/photo/6.4@2x.png'),
+                '65' : require('@/assets/about/photo/6.5@2x.png'),
+                '66' : require('@/assets/about/photo/6.6@2x.png'),
+                '67' : require('@/assets/about/photo/6.7@2x.png'),
             }
         ]
         }
@@ -82,8 +110,19 @@ export default {
     .line
       min-height 40px
       overflow hidden
-      flex 1
       background-color #000
+      &.line-0
+        flex 0.992
+      &.line-1
+        flex 0.994
+      &.line-2
+        flex 1
+      &.line-3
+        flex 0.99808
+      &.line-4
+        flex 1.12
+      &.line-5
+        flex .8726
       .photo-content
         width 100%
         overflow hidden
@@ -92,8 +131,8 @@ export default {
         overflow hidden
         &:hover
           p.name
-            transform translateY(0)
-            opacity 1
+            // transform translateY(0)
+            // opacity 1
           img 
             filter grayscale(0)
             cursor pointer
@@ -101,6 +140,7 @@ export default {
           position absolute
           margin 0
           width 100%
+          box-sizing border-box
           line-height 30px
           background linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.5))
           padding 8px 12px

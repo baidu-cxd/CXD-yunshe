@@ -107,7 +107,7 @@ export default {
       background-color #3a3a3a
     .card-content
       width 1200px
-      height 680px
+      height 640px
       margin 60px auto 20px
       .card-item
         float left
@@ -122,10 +122,11 @@ export default {
         .text-content
           margin 0 18px
           h3
-            margin 60px 0
+            margin 50px 0
             text-align center
-            font-size 42px
+            font-size 30px
             font-weight 700
+            line-height 48px
             color #3A3A3A
           p.zn-ch
             margin 50px 0

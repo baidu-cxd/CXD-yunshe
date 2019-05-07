@@ -22,7 +22,7 @@
           <div class="line"></div>
           <div class="raw">
               <span class="title">联系方式</span>
-              <span class="details">负责人：xxx    邮箱：xxx@baidu.com</span>
+              <span class="details">负责人：韩玢  邮箱：hanbin01@baidu.com</span>
           </div>
           <div class="line"></div>
         </div>

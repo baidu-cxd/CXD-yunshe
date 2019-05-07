@@ -1,5 +1,5 @@
 <template>
-  <div class="cxd">
+  <div :class="['cxd',resolveClass()]">
     <!-- 页面头部 -->
     <transition name="fade-scroll">
       <CxdHeader v-if="this.$store.state.isShowHeader"/>
@@ -36,6 +36,15 @@ export default {
       this.$store.state.scroll = 0
     }
   },
+  methods:{
+    resolveClass() {
+      if (this.$route.path === '/'){
+        return 'home'
+      } else {
+        return ''
+      }
+    }
+  }
 }
 </script>
 
