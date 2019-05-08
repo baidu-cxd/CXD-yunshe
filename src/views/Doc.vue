@@ -194,7 +194,7 @@ export default {
         let reg =  new RegExp("width:.[0-9]+\.[0-9]+px\;",'g')
         filteredDoc  = doc.replace(reg,'')
         let regList =  new RegExp('<ul class="lake-list">.*?</ul>','') //.*？匹配最短
-        filteredDoc  = doc.replace(regList,'')
+        filteredDoc  = filteredDoc.replace(regList,'')
         return filteredDoc
     }    
   }

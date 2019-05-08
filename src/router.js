@@ -33,6 +33,11 @@ export default new Router({
       component: Doc
     },
     {
+      path: '/test/:id',
+      name: 'test',
+      component: Doc
+    },
+    {
       path: '/docs/:id',
       name: 'docs',
       component: Docs
