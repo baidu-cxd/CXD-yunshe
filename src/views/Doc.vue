@@ -68,7 +68,7 @@
   overflow hidden
   position relative
   .text-content
-    min-width 800px
+    min-width 820px
     height 240px
     position absolute
     top 50%
@@ -181,13 +181,22 @@ export default {
           const doc = res.data
           // console.log(doc)
           const resolvedDoc = resolveDocHtml(doc)
-          this.doc = resolvedDoc.html
+          this.doc = this.docFilter(resolvedDoc.html)
           this.hero = resolvedDoc.hero
           this.title = resolvedDoc.title
           this.english = resolvedDoc.english
           this.author = doc.data.creator
         }) 
-    },      
+    },  
+    docFilter(doc){
+        console.log(doc)
+        let filteredDoc
+        let reg =  new RegExp("width:.[0-9]+\.[0-9]+px\;",'g')
+        filteredDoc  = doc.replace(reg,'')
+        let regList =  new RegExp('<ul class="lake-list">.*?</ul>','') //.*？匹配最短
+        filteredDoc  = doc.replace(regList,'')
+        return filteredDoc
+    }    
   }
 }
 </script>
