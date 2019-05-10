@@ -7,6 +7,7 @@ import vuescroll from 'vuescroll'
 import NProgress from "nprogress"
 import axios from 'axios'
 import qs from 'qs'
+import {token} from './token.js'
 
 // 加载进度条控制
 
@@ -47,7 +48,7 @@ var cxdAxios = axios.create({
   baseURL: '/api/',
   timeout: 30000,
   headers: {
-      'X-Auth-Token' : 'uQ2Fi6q5PAfpivhDqRU63GbqvX0FBgAGAc5BYedj',
+      'X-Auth-Token' : token,
       'Access-Control-Allow-Headers':'Content-Type, api_key, Authorization'
   }
 });
