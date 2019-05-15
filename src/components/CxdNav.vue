@@ -28,16 +28,16 @@ export default {
               name: 'HOME',
               cnName: '云舍首页',
           },
-          {
-              link: '/docs/projects',
-              name: 'PROJECT',
-              cnName: '项目总结'
-          },
-          {
-              link: '/docs/articles',
-              name: 'ARTICLES',
-              cnName: '团队博客'
-          },
+          //{
+          //    link: '/docs/projects',
+          //    name: 'PROJECT',
+          //    cnName: '项目总结'
+          //},
+          //{
+          //    link: '/docs/articles',
+          //    name: 'ARTICLES',
+          //    cnName: '团队博客'
+          //},
           {
               link: '/guide',
               name: 'GUIDE',

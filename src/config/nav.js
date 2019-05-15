@@ -1,15 +1,15 @@
 navData = {
     '/' : [ // 首页导航
-      {
-        link : '/docs/projects',
-        name : 'PROJECTS',
-        cnName : '项目总结'
-      },
-      {
-        link : '/docs/articles',
-        name : 'ARTICLES',
-        cnName : '团队博客'
-      }, 
+      //{
+      //  link : '/docs/projects',
+      //  name : 'PROJECTS',
+      //  cnName : '项目总结'
+      //},
+      //{
+      //  link : '/docs/articles',
+      //  name : 'ARTICLES',
+      //  cnName : '团队博客'
+      //}, 
       {
         link : '/cxd/about',
         name : 'ABOUT',
@@ -30,10 +30,10 @@ navData = {
         cnName : '控制台'
       },
       {
-        link : 'http://v3.yunshe.design/animate/',
-        name : 'MOTION',
+        link : 'http://tob.yunshe.design',
+        name : 'BUSINESS SYSTEM',
         type : 'out',
-        cnName : '动  画'
+        cnName : '企业级'
       },
     ]
   }

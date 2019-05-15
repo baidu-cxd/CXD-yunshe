@@ -327,10 +327,10 @@ export default {
                 },
                 {
                     index : '03',
-                    name : 'MOTION DESIGN',
-                    des : ['GUIDE、MOTION GRAPHIC','PAGE ANIMATION'],
-                    text : '在页面中引入动画的主要为了帮助用户理解页面交互形式，提高页面视觉效果，加深用户对页面的印象，降低长时间浏览的枯燥感。',
-                    link: 'http://v3.yunshe.design/animate/'
+                    name : 'toB',
+                    des : ['FOR BUSINESS','DESIGN SYSTEM'],
+                    text : '百度云B端平台规范针对企业平台页面编写,为确保企业平台设计的统一性、高效性，总结出的行业典型模板及设计资源，便于企业快速接入应用',
+                    link: 'http://tob.yunshe.design/'
                 }
             ]
         }

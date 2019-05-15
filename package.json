@@ -5,7 +5,8 @@
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
-    "gitpush": "bash deploy.sh"
+    "gitpush": "bash deploy.sh",
+    "bcc": "scp -r /Users/wangyihan05/Documents/code/baidu/cxd-yunshe/yunshe root@180.76.116.157:/var/www"
   },
   "dependencies": {
     "http-proxy-middleware": "^0.19.1",

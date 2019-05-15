@@ -2,6 +2,7 @@
 node_modules
 /dist
 /src/token.js
+/yunshe
 
 # local env files
 .env.local

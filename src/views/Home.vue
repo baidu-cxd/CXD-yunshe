@@ -16,19 +16,19 @@
           <!-- 关于我们 --> 
           <HomeAboutUs/>
           <!-- 项目 --> 
-          <docBoxHome :docList='startResolveDocList("projects")'>
+          <!-- <docBoxHome :docList='startResolveDocList("projects")'>
             <h2 slot="title">PROJECTS</h2>
             <router-link slot="action" to="/docs/projects">
               <div class="cxd-button-white">READ MORE</div>
             </router-link>
-          </docBoxHome>
+          </docBoxHome> --> 
           <!-- 文章 --> 
-          <docBoxHome :docList='startResolveDocList("articles")'>
+          <!-- <docBoxHome :docList='startResolveDocList("articles")'>
              <h2 slot="title">ARTICLES</h2>
             <router-link slot="action" to="/docs/articles">
               <div class="cxd-button-white">READ MORE</div>
             </router-link>
-          </docBoxHome>
+          </docBoxHome> --> 
           <!-- 地图 --> 
           <HomeMap/>
           <!-- 招聘 --> 
